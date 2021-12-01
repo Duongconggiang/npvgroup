@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">#ededed</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="NPV">#ffda0a</color>
+    <color name="NPV1">#B1A97B</color>
+    <color name="Blue_navy_Npv">#06314A</color>
+
+<!--    IT1005 2D495662EC69FD1E6C-->
+
+
+    <color name="level_0">#c4001d</color>
+    <color name="level_1">#f50057</color>
+    <color name="level_2">#ff4081</color>
+    <color name="level_3">#8e44ad</color>
+    <color name="level_4">#f1c40f</color>
+    <color name="level_5">#ff1744</color>
+    <color name="level_default">#000000</color>
+</resources>

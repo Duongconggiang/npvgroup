@@ -1,0 +1,44 @@
+<resources>
+    <string name="app_name">NP5 GROUP</string>
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">"Welcome! "</string>
+    <string name="invalid_username">Vui lòng nhập tài khoản</string>
+    <string name="invalid_password">Vui lòng nhập mật khẩu</string>
+    <string name="login_failed">"Đăng nhập không thành công"</string>
+    <!-- String channel of notification -->
+    <string name="channel_name_1">Channel 1</string>
+    <string name="channel_description_1">Mô tả channel 1</string>
+    <string name="channel_name_2">Channel 2</string>
+    <string name="channel_description_2">Mô tả channel 2</string>
+    <string name="title_activity_main2">MainActivity2</string>
+
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="menu_home">NPV</string>
+    <string name="menu_gallery">Chức Năng A</string>
+    <string name="menu_slideshow">Chức năng B</string>
+    <string name="title_activity_home">MainActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <!-- TODO: Remove or change this placeholder text -->
+
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="action_settings">Settings</string>
+    <string name="about_us">About Us</string>
+    <string name="loading">loading</string>
+    <string name="help">Help</string>
+    <string name="m_web">www.NhatPhongVan.in</string>
+    <string name="m_mail">NhatPhongVan@imranalam.in</string>
+    <string name="home_fragment">Home Fragment</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_maps">Map</string>
+</resources>
