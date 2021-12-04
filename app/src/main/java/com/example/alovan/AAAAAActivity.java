@@ -17,6 +17,7 @@ import android.content.ComponentName;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -25,19 +26,20 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.myapplication.Home.LocalService;
 import com.example.myapplication.Home.myJobScheduler;
-import com.example.myapplication.NPVSharedPreference.LocalDataManager;
 import com.example.myapplication.R;
+import com.example.myapplication.data.ConnectDB;
 import com.example.myapplication.data.model.getUserInfo;
 import com.example.navigation.BaseItem;
 import com.example.navigation.CustomDataProvider;
-import com.example.navigation.Item;
 import com.example.view.LevelBeamView;
 import com.google.android.material.navigation.NavigationView;
 
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.List;
-import java.util.Set;
 
 import pl.openrnd.multilevellistview.ItemInfo;
 import pl.openrnd.multilevellistview.MultiLevelListAdapter;
@@ -52,41 +54,54 @@ public class AAAAAActivity extends AppCompatActivity
 
 
     private MultiLevelListView multiLevelListView;
-    private OnItemClickListener mOnItemClickListener = new OnItemClickListener() {
+    private final OnItemClickListener mOnItemClickListener = new OnItemClickListener() {
 
         private void showItemDescription(Object object, ItemInfo itemInfo) {
 
-            if (((BaseItem) object).getName().contains("Hồ sơ khách hàng")) {
-                displaySelectedScreen("Dịch vụ khách hàng");
-            }
-            if (((BaseItem) object).getName().contains("Tiếp nhận TT đến")) {
-                displaySelectedScreen("Dịch vụ khách hàng");
-            }
-            if (((BaseItem) object).getName().contains("Category-2")) { //submenu
-                displaySelectedScreen("CATEGORY2");//root menu
-            }
-            if (((BaseItem) object).getName().contains("Category-3")) {
-                displaySelectedScreen("CATEGORY3");
-            }
-            if (((BaseItem) object).getName().contains("Assignment-1")) {
-                displaySelectedScreen("ASSIGNMENT1");
-            }
-            if (((BaseItem) object).getName().contains("Assignment-2")) {
-                displaySelectedScreen("ASSIGNMENT2");
-            }
-            if (((BaseItem) object).getName().contains("Assignment-3")) {
-                displaySelectedScreen("ASSIGNMENT3");
-            }
-            if (((BaseItem) object).getName().contains("Assignment-4")) {
-                displaySelectedScreen("ASSIGNMENT4");
-            }
-            if (((BaseItem) object).getName().contains("Help")) {
-                displaySelectedScreen("HELP");
-            }
-            if (((BaseItem) object).getName().contains("About Us")) {
-                displaySelectedScreen("ABOUTUS");
+            ConnectDB connectDB = new ConnectDB();
+            Connection conn  = connectDB.CONN();
+
+            String query = "Select * from Category where CatParent != 0 and CatShow = 1";
+            Statement statement = null;
+            try {
+                statement = conn.createStatement();
+                ResultSet rs = statement.executeQuery(query);
+                while (rs.next()){
+                    String Menu = rs.getString("CatName");
+                    Log.e("Menu",Menu);
+                    String cID = rs.getString("CatID");
+                    Log.e("ID",cID);
+                    if (((BaseItem) object).getName().contains(Menu)) {
+
+                        //displaySelectedScreen(Menu);
+
+                        Fragment fragment = null;
+
+                        fragment = new HomeFragment(Menu,cID);
+
+                        if (fragment != null) {
+                            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+                            ft.replace(R.id.content_frame, fragment);
+                            ft.commit();
+                            DrawerLayout drawer = findViewById(R.id.drawer_layout);
+                            drawer.closeDrawer(GravityCompat.START);
+                        }
+
+                    }
+
+                }conn.close();
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
             }
 
+
+
+//            if (((BaseItem) object).getName().contains("Chăm sóc khách hàng")) {
+//                displaySelectedScreen("Chăm sóc khách hàng");
+//            }
+//            if (((BaseItem) object).getName().contains("Theo dõi bàn giao KH")) { //click
+//                displaySelectedScreen("Theo dõi bàn giao KH");//forward
+//            }
 
 
         }
@@ -174,37 +189,15 @@ public class AAAAAActivity extends AppCompatActivity
         Fragment fragment = null;
         //initializing the fragment object which is selected
         switch (itemName) {
-            case "Dịch vụ khách hàng"://root menu
-                fragment = new menu3_1();
-                break;
-            case "Tiếp nhận TT đến":
-                fragment = new HomeFragment();
-                break;
-            case "CATEGORY2":
-                fragment = new Category2Fragment();
-                break;
-            case "CATEGORY3":
-                fragment = new Category3Fragment();
-                break;
-            case "ASSIGNMENT1":
-                fragment = new Assignment1Fragment();
-                break;
-            case "ASSIGNMENT2":
-                fragment = new Assignment2Fragment();
-                break;
-            case "ASSIGNMENT3":
-                fragment = new Assignment3Fragment();
-                break;
-            case "ASSIGNMENT4":
-                fragment = new Assignment4Fragment();
-                break;
-            case "HELP":
-                startActivity(new Intent(getApplicationContext(), HelpActivity.class));
-                break;
-            case "ABOUTUS":
-                startActivity(new Intent(getApplicationContext(), AboutUsActivity.class));
-                break;
-
+//            case "Dịch vụ khách hàng"://root menu
+//                fragment = new menu3_1();
+//                break;
+//            case "Chăm sóc khách hàng":
+//                fragment = new Assignment1Fragment();
+//                break;
+//            case "Theo dõi bàn giao KH":
+//                fragment = new Assignment2Fragment();
+//                break;
 
         }
 
@@ -289,6 +282,21 @@ public class AAAAAActivity extends AppCompatActivity
         JobScheduler jobScheduler = (JobScheduler) getSystemService(JOB_SCHEDULER_SERVICE);
         jobScheduler.schedule(jobInfo);
     }
+
+//    private void getData(int ID) throws SQLException {
+//        ConnectDB connectDB = new ConnectDB();
+//        Connection conn  = connectDB.CONN();
+//
+//        String query = "Select * from Category where CatParent= '"+ID+"' and CatShow = 1";
+//        Statement statement = conn.createStatement();
+//        ResultSet rs = statement.executeQuery(query);
+//
+//        while (rs.next()){
+//            String Menu = rs.getString("CatName");
+//            String cID = rs.getString("CatID");
+//        }
+//
+//    }
 
 
 }

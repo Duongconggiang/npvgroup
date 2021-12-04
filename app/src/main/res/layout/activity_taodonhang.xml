@@ -2,269 +2,237 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:orientation="vertical"
     android:layout_height="match_parent"
-    tools:context=".taodonhang">
-
+    android:orientation="vertical"
+    android:layout_marginTop="100dp"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp">
    <LinearLayout
        android:layout_marginTop="10dp"
        android:layout_width="fill_parent"
        android:orientation="horizontal"
+       android:layout_marginBottom="10dp"
        android:layout_height="wrap_content">
 
-   <TextView
-       android:id="@+id/tvDeliveryDate"
-       android:layout_width="wrap_content"
-       android:focusable="false"
-       android:layout_weight="1"
-       android:layout_height="match_parent"
-       android:layout_centerVertical="true"
-       android:layout_marginRight="10dp"
-       android:layout_marginLeft="10dp"
-       android:layout_gravity="center_vertical"
-       android:gravity="center"
-       android:background="@drawable/bg_white_rounded"
-       android:text="Ngày/tháng /năm tạo đơn hàng"
-       android:layout_toLeftOf="@+id/tvDeliveryTime"
-       android:paddingLeft="2dip"
-       android:visibility="visible"/>
-   <Button
-       android:id="@+id/timkiem"
-       android:layout_width="wrap_content"
-       android:text="Tìm kiếm"
-       android:layout_weight="0.1"
-       android:textAlignment="center"
-       android:layout_gravity="center"
-       android:background="@drawable/bg_white_rounded"
-       android:layout_marginRight="10dp"
-       android:textAllCaps="false"
-       android:layout_height="40dp"/>
-</LinearLayout>
-
-
-   <HorizontalScrollView
-       android:layout_width="match_parent"
-       android:layout_height="match_parent">
-   <LinearLayout
-       android:layout_width="match_parent"
-       android:layout_marginTop="10dp"
-       android:layout_height="wrap_content"
-          android:background="@color/cardview_dark_background"
-          android:orientation="horizontal">
-
-         <LinearLayout
+      <TextView
+          android:id="@+id/tvDeliveryDate"
+          android:layout_width="wrap_content"
+          android:focusable="false"
+          android:layout_height="match_parent"
+          android:layout_centerVertical="true"
+          android:layout_marginRight="10dp"
+          android:layout_marginLeft="10dp"
+          android:layout_gravity="center_vertical"
+          android:gravity="center"
+          android:background="@drawable/bg_white_rounded"
+          android:text="Ngày/tháng /năm tạo đơn hàng"
+          android:paddingLeft="2dip"
+          android:visibility="visible"/>
+      <Button
+          android:id="@+id/timkiem"
+          android:layout_width="wrap_content"
+          android:text="Tìm kiếm"
+          android:layout_weight="0.1"
+          android:textAlignment="center"
+          android:layout_gravity="center"
+          android:background="@drawable/bg_white_rounded"
+          android:layout_marginRight="10dp"
+          android:textAllCaps="false"
+          android:layout_height="40dp"/>
+   </LinearLayout>
+   <ScrollView
+       android:layout_width="fill_parent"
+       android:layout_height="fill_parent"
+       android:scrollbars="horizontal">
+      <HorizontalScrollView
+          android:layout_width="wrap_content"
+          android:layout_height="fill_parent"
+          >
+         <TableLayout
              android:layout_width="match_parent"
-             android:layout_marginLeft="2dp"
-             android:layout_height="40dp"
-             android:textAlignment="center"
-             android:orientation="horizontal">
+             android:background="@drawable/border_header_listview"
+             android:layout_height="match_parent">
 
-            <TextView
-                android:id="@+id/tvSTT"
-                android:layout_width="40dp"
-                android:layout_height="match_parent"
-                android:text="STT"
-                android:textAlignment="center"
-                android:padding="5dp"
-                android:gravity="center"
-                android:textColor="@color/black"
-                android:textStyle="bold"
-                android:textSize="12sp"
-                android:background="@drawable/a" />
+            <TableRow
+                android:orientation="horizontal"
+                android:background="#607D8B">
+               <!--        <CheckBox-->
+               <!--            android:layout_width="wrap_content"-->
+               <!--            android:layout_height="wrap_content"-->
+               <!--             />-->
+               <TextView
+                   android:id="@+id/a"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:text="Số lệnh" />
+               <TextView
+                   android:id="@+id/a2"
+                   android:paddingRight="20dp"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:text="Ngày đi" />
+               <TextView
+                   android:id="@+id/a3"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:paddingRight="20dp"
+                   android:text="Số km" />
+               <TextView
+                   android:id="@+id/a4"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:paddingRight="20dp"
+                   android:text="Số bill" />
+               <TextView
+                   android:id="@+id/a5"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:paddingRight="20dp"
+                   android:text="Số xe" />
+               <TextView
+                   android:id="@+id/a6"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:paddingRight="20dp"
+                   android:text="Lái xe" />
 
-            <TextView
-                android:id="@+id/tvCustomerCode"
-                android:layout_width="60dp"
-                android:layout_height="match_parent"
-                android:text="Số lệnh"
-                android:textAlignment="center"
-                android:padding="5dp"
-                android:gravity="center"
-                android:textColor="@color/black"
-                android:textStyle="bold"
-                android:textSize="12sp"
-                android:background="@drawable/a" />
+               <TextView
+                   android:id="@+id/a7"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:paddingRight="20dp"
+                   android:text="Ưng chuyến đi" />
+               <TextView
+                   android:id="@+id/a8"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:paddingRight="20dp"
+                   android:text="Lương chuyến" />
+               <TextView
+                   android:id="@+id/a9"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:paddingRight="20dp"
+                   android:text="Ci phí" />
+               <TextView
+                   android:id="@+id/a10"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:paddingRight="20dp"
+                   android:text="Còn lại" />
+               <TextView
+                   android:id="@+id/a11"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:paddingRight="20dp"
+                   android:text="Trạng thái" />
+               <TextView
+                   android:id="@+id/a12"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:paddingRight="20dp"
+                   android:text="Ghi chú" />
+               <TextView
+                   android:id="@+id/a13"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:text="Mã Nv" />
+            </TableRow>
 
-            <!--<TextView-->
-            <!--android:id="@+id/tvMaKHCu"-->
-            <!--android:layout_width="70dp"-->
-            <!--android:layout_height="match_parent"-->
-            <!--android:gravity="center_vertical"-->
-            <!--android:text="Mã KH cũ"-->
-            <!--android:textAlignment="center"-->
-            <!--android:padding="5dp"-->
-            <!--android:textColor="@color/BLACK"-->
-            <!--android:textStyle="bold"-->
-            <!--android:textSize="12sp"-->
-            <!--android:background="@drawable/border_header_listview" />-->
+            <TableRow
+                android:background="#ECEFF1"
+                >
+               <!--        <CheckBox-->
+               <!--            android:layout_width="wrap_content"-->
+               <!--            android:layout_height="wrap_content"-->
+               <!--           />-->
+               <TextView
+                   android:id="@+id/b"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:paddingRight="20dp"
+                   android:text="Android Lollipop" />
+               <TextView
+                   android:id="@+id/b1"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_gravity="center"
+                   android:text="21" />
+               <TextView
+                   android:id="@+id/b2"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:paddingRight="20dp"
+                   android:text="Android Lollipop" />
+               <TextView
+                   android:id="@+id/b3"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:paddingRight="20dp"
+                   android:text="21" />
+               <TextView
+                   android:id="@+id/b4"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:paddingRight="20dp"
+                   android:text="Android Lollipop" />
+               <TextView
+                   android:id="@+id/b5"
+                   android:layout_width="wrap_content"
+                   android:paddingRight="20dp"
+                   android:layout_height="wrap_content"
+                   android:text="21" />
+               <TextView
+                   android:id="@+id/b6"
+                   android:layout_width="wrap_content"
+                   android:paddingRight="20dp"
+                   android:layout_height="wrap_content"
+                   android:text="Android Lollipop" />
+               <TextView
+                   android:id="@+id/b7"
+                   android:layout_width="wrap_content"
+                   android:paddingRight="20dp"
+                   android:padding="20dp"
+                   android:layout_height="wrap_content"
+                   android:text="21" />
+               <TextView
+                   android:id="@+id/b8"
+                   android:layout_width="wrap_content"
+                   android:paddingRight="20dp"
+                   android:layout_height="wrap_content"
+                   android:text="Android Lollipop" />
+               <TextView
+                   android:id="@+id/b9"
+                   android:layout_width="wrap_content"
+                   android:paddingRight="20dp"
+                   android:layout_height="wrap_content"
+                   android:text="21" />
+               <TextView
+                   android:id="@+id/b10"
+                   android:layout_width="wrap_content"
+                   android:paddingRight="20dp"
+                   android:layout_height="wrap_content"
+                   android:text="Android Lollipop" />
+               <TextView
+                   android:id="@+id/b11"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:paddingRight="20dp"
+                   android:text="21" />
+               <TextView
+                   android:id="@+id/b12"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:paddingRight="20dp"
+                   android:paddingStart="10dp"
+                   android:text="21" />
 
-            <TextView
-                android:id="@+id/tvCustomerName"
-                android:layout_width="120dp"
-                android:layout_height="match_parent"
-                android:text="Ngày đi"
-                android:paddingLeft="5dp"
-                android:gravity="center"
-                android:paddingRight="5dp"
-                android:textColor="@color/black"
-                android:textStyle="bold"
-                android:textSize="12sp"
-                android:background="@drawable/a" />
 
-            <!--<TextView-->
-            <!--android:id="@+id/tvCustomer"-->
-            <!--android:layout_width="150dp"-->
-            <!--android:layout_height="match_parent"-->
-            <!--android:gravity="center_vertical"-->
-            <!--android:text="Khách hàng"-->
-            <!--android:textAlignment="center"-->
-            <!--android:paddingLeft="5dp"-->
-            <!--android:textColor="@color/BLACK"-->
-            <!--android:textStyle="bold"-->
-            <!--android:textSize="12sp"-->
-            <!--android:background="@drawable/border_header_listview" />-->
+            </TableRow>
 
-            <TextView
-                android:id="@+id/tvStoreGroup"
-                android:layout_width="70dp"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:text="Số Km"
-                android:padding="5dp"
-                android:textColor="@color/black"
-                android:textStyle="bold"
-                android:textSize="12sp"
-                android:background="@drawable/a"/>
 
-            <!--<TextView-->
-            <!--android:id="@+id/tvPrice"-->
-            <!--android:layout_width="120dp"-->
-            <!--android:layout_height="match_parent"-->
-            <!--android:gravity="center_vertical"-->
-            <!--android:text="Doanh số tháng"-->
-            <!--android:textAlignment="center"-->
-            <!--android:paddingLeft="5dp"-->
-            <!--android:textColor="@color/BLACK"-->
-            <!--android:textStyle="bold"-->
-            <!--android:textSize="12sp"-->
-            <!--android:background="@drawable/border_header_listview"/>-->
-
-            <TextView
-                android:id="@+id/tvAddress"
-                android:layout_width="250dp"
-                android:layout_height="match_parent"
-                android:text="Só bill"
-                android:gravity="center"
-                android:padding="5dp"
-                android:textColor="@color/black"
-                android:textStyle="bold"
-                android:textSize="12sp"
-                android:background="@drawable/a"/>
-
-            <TextView
-                android:id="@+id/tvVisit"
-                android:layout_width="80dp"
-                android:layout_height="match_parent"
-                android:text="Số xe"
-                android:gravity="center"
-                android:textColor="@color/black"
-                android:textStyle="bold"
-                android:textSize="12sp"
-                android:background="@drawable/a"/>
-
-            <TextView
-                android:id="@+id/tvGheTham"
-                android:layout_width="80dp"
-                android:layout_height="match_parent"
-                android:text="Lái xe"
-                android:gravity="center"
-                android:textColor="@color/black"
-                android:textStyle="bold"
-                android:textSize="12sp"
-                android:background="@drawable/a"/>
-
-            <TextView
-                android:id="@+id/tvStatus"
-                android:layout_width="80dp"
-                android:layout_height="match_parent"
-                android:text="Ứng chuyển đi"
-                android:gravity="center"
-                android:padding="5dp"
-                android:textColor="@color/black"
-                android:textStyle="bold"
-                android:textSize="12sp"
-                android:background="@drawable/a"/>
-            <TextView
-                android:id="@+id/a"
-                android:layout_width="80dp"
-                android:layout_height="match_parent"
-                android:text="Lương chuyển"
-                android:gravity="center"
-                android:padding="5dp"
-                android:textColor="@color/black"
-                android:textStyle="bold"
-                android:textSize="12sp"
-                android:background="@drawable/a" />
-            <TextView
-                android:id="@+id/b"
-                android:layout_width="80dp"
-                android:layout_height="match_parent"
-                android:text="Chi phí"
-                android:gravity="center"
-                android:padding="5dp"
-                android:textColor="@color/black"
-                android:textStyle="bold"
-                android:textSize="12sp"
-                android:background="@drawable/a"/>
-            <TextView
-                android:id="@+id/c"
-                android:layout_width="80dp"
-                android:layout_height="match_parent"
-                android:text="Còn lại"
-                android:gravity="center"
-                android:padding="5dp"
-                android:textColor="@color/black"
-                android:textStyle="bold"
-                android:textSize="12sp"
-                android:background="@drawable/a"/>
-            <TextView
-                android:id="@+id/d"
-                android:layout_width="80dp"
-                android:layout_height="match_parent"
-                android:text="Trạng thái"
-                android:gravity="center"
-                android:padding="5dp"
-                android:textColor="@color/black"
-                android:textStyle="bold"
-                android:textSize="12sp"
-                android:background="@drawable/a" />
-            <TextView
-                android:id="@+id/e"
-                android:layout_width="80dp"
-                android:layout_height="match_parent"
-                android:text="Ghi chú"
-                android:gravity="center"
-                android:padding="5dp"
-                android:textColor="@color/black"
-                android:textStyle="bold"
-                android:textSize="12sp"
-                android:background="@drawable/a" />
-            <TextView
-                android:id="@+id/f"
-                android:layout_width="80dp"
-                android:layout_height="match_parent"
-                android:text="Mã nhân viên"
-                android:gravity="center"
-                android:padding="5dp"
-                android:textColor="@color/black"
-                android:textStyle="bold"
-                android:textSize="12sp"
-                android:background="@drawable/a" />
-
-         </LinearLayout>
-
-      </LinearLayout>
-   </HorizontalScrollView>
+         </TableLayout>
+      </HorizontalScrollView>
+   </ScrollView>
 </LinearLayout>

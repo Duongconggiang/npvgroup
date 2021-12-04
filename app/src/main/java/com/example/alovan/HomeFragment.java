@@ -7,24 +7,37 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
 
+import com.example.myapplication.Notification.Main_Notification;
 import com.example.myapplication.R;
+import com.example.myapplication.data.ConnectDB;
 
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.Objects;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link HomeFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+
 public class HomeFragment extends Fragment {
 
-    public HomeFragment() {
+    private String Menu;
+    private String ID;
+    private ArrayList<String> arrayMenuList=null;
+
+    public HomeFragment(String Menu, String catID) {
         // Required empty public constructor
+        this.Menu = Menu;
+        this.ID = catID;
+
     }
 
 
@@ -35,17 +48,37 @@ public class HomeFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
-        TextView textView = view.findViewById(R.id.text_view);
-        textView.setText("Home Fragment");
+        ListView listView = view.findViewById(R.id.listviewhome);
+        ConnectDB connectDB = new ConnectDB();
+        Connection conn = connectDB.CONN();
 
-        return view;
-    }
+        String query = "Select * from Category where CatParent='"+ID+"' and CatShow = 1";
+        Statement statement = null;
+        try {
+            arrayMenuList = new ArrayList<>();
+            statement = conn.createStatement();
+            ResultSet rs = statement.executeQuery(query);
+            if(rs.next()==false){arrayMenuList.add("Home - Page");}
 
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        //you can set the title for your toolbar here for different fragments different titles
-        String title = "Home";
-        Objects.requireNonNull(getActivity()).setTitle(title);
-    }
+            while (rs.next()) {
+                arrayMenuList.add(rs.getString("CatName"));
+                Log.e("Sub",rs.getString("CatName"));
+            }
+            ArrayAdapter array = new ArrayAdapter(getActivity(), android.R.layout.simple_list_item_activated_1,arrayMenuList);
+            listView.setAdapter(array);
+            conn.close();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();}
+
+            return view;
+        }
+
+        public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState){
+            super.onViewCreated(view, savedInstanceState);
+            //you can set the title for your toolbar here for different fragments different titles
+            String title = "Home";
+            requireActivity().setTitle(title);
+        }
+
+
 }

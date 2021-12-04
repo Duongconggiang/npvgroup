@@ -136,7 +136,16 @@ public class CustomDataProvider {
             Statement stm = conn.createStatement();
             ResultSet rs = stm.executeQuery(query);
             while(rs.next()){
-                list.add(new Item(rs.getString("CatName")));
+                //new check list menu
+                String idsub = rs.getString("CatID");
+                String qr = "Select * from Category where CatParent='"+idsub+"' and CatShow = 1";
+                Statement statement = conn.createStatement();
+                ResultSet resultSet = statement.executeQuery(qr);
+
+                if(resultSet.next()==false){
+                list.add(new Item(rs.getString("CatName")));}
+                else{list.add(new GroupItem(rs.getString("CatName")));}
+
             } conn.close();
 
         } catch (SQLException throwables) {
