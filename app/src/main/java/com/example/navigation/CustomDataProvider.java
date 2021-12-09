@@ -10,6 +10,7 @@ import androidx.annotation.Nullable;
 import com.example.myapplication.R;
 import com.example.myapplication.data.ConnectDB;
 import com.example.myapplication.data.model.getUserInfo;
+import com.example.view.LevelBeamView;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -27,7 +28,6 @@ public class CustomDataProvider {
     private static final int LEVEL_2 = 2;
     private static final int LEVEL_3 = 3;
     private static List<BaseItem> mMenu = new ArrayList<>();
-    Context context;
 
 
 
@@ -37,9 +37,6 @@ public class CustomDataProvider {
         ConnectDB connectDB = new ConnectDB();
         Connection conn  = connectDB.CONN();
 
-        //Get user name
-        getUserInfo getuserInfo = new getUserInfo();
-        String UserName = getuserInfo.getUserNamedata();
 
         List<BaseItem> rootMenu = new ArrayList<>();
 
@@ -61,9 +58,9 @@ public class CustomDataProvider {
                 Statement stm1 = conn1.createStatement();
                 ResultSet rs1 = stm1.executeQuery(query1);
                 if(rs1.next()==true){
-                    rootMenu.add(new GroupItem(rs.getString("CatName")));
+                    rootMenu.add(new GroupItem(Menu));
                 }else{
-                    rootMenu.add(new Item(rs.getString("CatName")));}
+                    rootMenu.add(new Item(Menu));}
                 //Disconnect conn1
                 conn1.close();
             }
@@ -98,6 +95,14 @@ public class CustomDataProvider {
 
         if (level == LEVEL_1) {
 
+//         int count = IdrootMenu.size();
+//         for(int j=1;j<=count;j++){
+//             if(menuItem.equals(CatrootMenu.get(j))){
+//                 result = getListSubMenu(Integer.parseInt(IdrootMenu.get(j)));
+//             }
+//
+//         }
+
             ConnectDB connectDB = new ConnectDB();
             Connection conn  = connectDB.CONN();
             try {
@@ -115,14 +120,17 @@ public class CustomDataProvider {
             } catch (SQLException throwables) {
                 throwables.printStackTrace();
             }
+
 //            switch (menuItem) {
 //                case "Dịch vụ khách hàng":
 //                    result = getListSubMenu(1);
 //                    break;
 //            }
+
         }
         return result;
     }
+
 
     @NonNull
     private static List<BaseItem> getListSubMenu(int id) {

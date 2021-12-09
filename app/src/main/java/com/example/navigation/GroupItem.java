@@ -14,7 +14,7 @@ public class GroupItem extends BaseItem {
     }
 
     public int getLevel() {
-        return mLevel;
+        return 0;
     }
 
     public void setLevel(int level) {

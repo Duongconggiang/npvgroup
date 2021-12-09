@@ -1,6 +1,7 @@
 package com.example.alovan;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -11,9 +12,11 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.myapplication.Notification.Main_Notification;
 import com.example.myapplication.R;
@@ -70,15 +73,39 @@ public class HomeFragment extends Fragment {
         } catch (SQLException throwables) {
             throwables.printStackTrace();}
 
+        //set onlick item sub menu 3
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                int position = arrayMenuList.size();
+                for(int j=0;j<position;j++){
+                    if(i==j){
+                        callMenulayout(i,arrayMenuList.get(i));
+                    }
+                }
+            }
+        });
+
             return view;
         }
 
-        public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState){
+    private void callMenulayout(int i, String callMenu) {
+        Intent intent;
+            switch (callMenu){
+                case "Lệnh điều động":
+                    intent = new Intent(getActivity(),taodonhang.class);
+                    startActivity(intent);
+                    break;
+            }
+    }
+
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState){
             super.onViewCreated(view, savedInstanceState);
             //you can set the title for your toolbar here for different fragments different titles
             String title = "Home";
             requireActivity().setTitle(title);
         }
+
 
 
 }

@@ -10,6 +10,10 @@ import android.view.View;
 import androidx.core.content.ContextCompat;
 
 import com.example.myapplication.R;
+import com.example.myapplication.data.model.getConnectDataBase;
+import com.example.navigation.GroupItem;
+
+import java.sql.SQLException;
 
 public class LevelBeamView extends View {
 

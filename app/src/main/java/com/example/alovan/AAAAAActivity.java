@@ -68,12 +68,16 @@ public class AAAAAActivity extends AppCompatActivity
                 ResultSet rs = statement.executeQuery(query);
                 while (rs.next()){
                     String Menu = rs.getString("CatName");
-                    Log.e("Menu",Menu);
                     String cID = rs.getString("CatID");
-                    Log.e("ID",cID);
-                    if (((BaseItem) object).getName().contains(Menu)) {
+
+//                    if(Menu=="Dịch vụ"){break;}
+                    if (((BaseItem) object).getName().equals(Menu)) {
+
+
 
                         //displaySelectedScreen(Menu);
+                        Log.e("Menu",Menu);
+                        Log.e("ID",cID);
 
                         Fragment fragment = null;
 
@@ -108,11 +112,17 @@ public class AAAAAActivity extends AppCompatActivity
 
         @Override
         public void onItemClicked(MultiLevelListView parent, View view, Object item, ItemInfo itemInfo) {
+
+            Log.e("item", String.valueOf(item));
+            Log.e("iteminfo", String.valueOf(itemInfo));
             showItemDescription(item, itemInfo);
         }
 
         @Override
         public void onGroupItemClicked(MultiLevelListView parent, View view, Object item, ItemInfo itemInfo) {
+
+            Log.e("Groupitem", String.valueOf(item));
+            Log.e("Groupiteminfo", String.valueOf(itemInfo));
             showItemDescription(item, itemInfo);
         }
     };
@@ -126,10 +136,6 @@ public class AAAAAActivity extends AppCompatActivity
 
         ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE,
                 Manifest.permission.WRITE_EXTERNAL_STORAGE}, PackageManager.PERMISSION_GRANTED);
-
-
-        getUserInfo getuserInfo = new getUserInfo();
-        String UserName = getuserInfo.getUserNamedata();
 
         StartJobScheduler();;
 
@@ -189,15 +195,15 @@ public class AAAAAActivity extends AppCompatActivity
         Fragment fragment = null;
         //initializing the fragment object which is selected
         switch (itemName) {
-//            case "Dịch vụ khách hàng"://root menu
-//                fragment = new menu3_1();
-//                break;
-//            case "Chăm sóc khách hàng":
-//                fragment = new Assignment1Fragment();
-//                break;
-//            case "Theo dõi bàn giao KH":
-//                fragment = new Assignment2Fragment();
-//                break;
+            case "Dịch vụ khách hàng"://root menu
+                fragment = new menu3_1();
+                break;
+            case "Chăm sóc khách hàng":
+                fragment = new Assignment1Fragment();
+                break;
+            case "Theo dõi bàn giao KH":
+                fragment = new Assignment2Fragment();
+                break;
 
         }
 
@@ -209,7 +215,6 @@ public class AAAAAActivity extends AppCompatActivity
             DrawerLayout drawer = findViewById(R.id.drawer_layout);
             drawer.closeDrawer(GravityCompat.START);
         }
-
 
     }
 
@@ -282,21 +287,5 @@ public class AAAAAActivity extends AppCompatActivity
         JobScheduler jobScheduler = (JobScheduler) getSystemService(JOB_SCHEDULER_SERVICE);
         jobScheduler.schedule(jobInfo);
     }
-
-//    private void getData(int ID) throws SQLException {
-//        ConnectDB connectDB = new ConnectDB();
-//        Connection conn  = connectDB.CONN();
-//
-//        String query = "Select * from Category where CatParent= '"+ID+"' and CatShow = 1";
-//        Statement statement = conn.createStatement();
-//        ResultSet rs = statement.executeQuery(query);
-//
-//        while (rs.next()){
-//            String Menu = rs.getString("CatName");
-//            String cID = rs.getString("CatID");
-//        }
-//
-//    }
-
 
 }
